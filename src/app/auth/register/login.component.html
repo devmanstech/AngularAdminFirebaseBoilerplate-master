@@ -1,0 +1,19 @@
+<div class="scrollable-container wrapper">
+  <div class="layout">
+    <div class="layout-container">
+      <div class="content">
+        <div class="columns">
+          <h1 id="title" class="title text-center" style="margin-top: 5%;">Sign Up</h1>
+          <firebase-ui
+            (signInSuccessWithAuthResult)="successCallback($event)"
+            (signInFailure)="errorCallback($event)"
+          >
+          </firebase-ui>
+          <section class="another-action" aria-label="Register">
+            Back to <a class="text-link" routerLink="../login">Login</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

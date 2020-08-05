@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Update profile</nb-card-header>
+      <nb-card-body>
+        <form
+          [formGroup]="editForm"
+          (ngSubmit)="onSubmit(editForm)"
+          class="login100-form validate-form"
+        >
+          <div class="form-group" *ngIf="statusMessage">{{ statusMessage }}</div>
+          <div class="form-group" *ngIf="messageString">{{ messageString }}</div>
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="label">Email address</label>
+            <input
+              type="email"
+              formControlName="email"
+              nbInput
+              fullWidth
+              id="exampleInputEmail1"
+              placeholder="Email"
+            />
+			<span class="caption status-danger ng-star-inserted" 
+			  *ngIf="(editForm.controls.email.touched) && 
+			  editForm.controls.email.errors?.required">
+			  Email is required
+			</span>
+			<span class="caption status-danger ng-star-inserted" 
+			  *ngIf="(editForm.controls.email.touched) && 
+			  editForm.controls.email.errors?.email">
+			  Please enter valid email id
+			</span>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="label">Name</label>
+            <input
+              type="text"
+              formControlName="full_name"
+              nbInput
+              fullWidth
+              id="exampleInputPassword1"
+              placeholder="Name"
+            />
+			<span class="caption status-danger ng-star-inserted" 
+			  *ngIf="(editForm.controls.full_name.touched) && editForm.controls.full_name.errors?.required">
+			    Name is required
+			</span>
+			<span class="caption status-danger ng-star-inserted" 
+			  *ngIf="(editForm.controls.full_name.touched) && editForm.controls.full_name.errors?.minlength">
+			    Name should be min 2 charcters
+			</span>
+			<span class="caption status-danger ng-star-inserted" 
+			  *ngIf="(editForm.controls.full_name.touched) && editForm.controls.full_name.errors?.maxlength">
+			    Name should be less then 30 charcters
+			</span>
+          </div>
+          <button type="submit" [disabled]="!editForm.valid" 
+		    nbButton status="danger">Submit</button> &nbsp;
+          <button type="button"  *ngIf="isEmail" (click)="rensendCode()" 
+		    nbButton status="danger">
+            Resend Email Verification
+          </button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<!-- <ngx-auth-firebaseui-user></ngx-auth-firebaseui-user> -->
